@@ -16,8 +16,8 @@ sky_surface=pygame.image.load("graphics/Sky.png").convert()
 ground_surface=pygame.image.load("graphics/ground.png").convert()
 
 #Text
-text_surface=test_font.render("My game",False,"Black")
-text_rec=text_surface.get_rect(center=(400,50))
+score_surface=test_font.render(" My game",False,(64,64,64))
+score_rec=score_surface.get_rect(center=(400,50))
 
 #snail surface
 snail_surface=pygame.image.load("graphics\snail\snail1.png").convert_alpha()
@@ -41,9 +41,10 @@ while True:
     #showing surface to the screen using coordinate        
     screen.blit(sky_surface,(0,0))
     screen.blit(ground_surface,(0,300))
-    pygame.draw.rect(screen,"pink",text_rec)
-    pygame.draw.rect(screen,"black",text_rec,2)
-    screen.blit(text_surface,text_rec)
+    pygame.draw.rect(screen,"#c0e8ec",score_rec,border_radius=4)
+    pygame.draw.rect(screen,"black",score_rec,2,border_radius=4)
+    screen.blit(score_surface,score_rec)
+    # pygame.draw.ellipse(screen,"black",pygame.Rect(50,200,50,100))
 
     #for snail   
     screen.blit(snail_surface,snail_rec)
