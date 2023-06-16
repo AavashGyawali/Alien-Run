@@ -41,10 +41,12 @@ while True:
     #showing surface to the screen using coordinate        
     screen.blit(sky_surface,(0,0))
     screen.blit(ground_surface,(0,300))
-    screen.blit(text_surface,(330,50))
+    pygame.draw.rect(screen,"pink",text_rec)
+    screen.blit(text_surface,text_rec)
 
     #for snail   
     screen.blit(snail_surface,snail_rec)
+
     
     snail_rec.left-=4
     if snail_rec.right<0:snail_rec.left=800
