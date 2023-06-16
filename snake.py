@@ -42,6 +42,7 @@ while True:
     screen.blit(sky_surface,(0,0))
     screen.blit(ground_surface,(0,300))
     pygame.draw.rect(screen,"pink",text_rec)
+    pygame.draw.rect(screen,"black",text_rec,2)
     screen.blit(text_surface,text_rec)
 
     #for snail   
