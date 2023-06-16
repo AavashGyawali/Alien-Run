@@ -52,8 +52,8 @@ while True:
     # if collision:
     #     print("Collision")
     mouse_pos=pygame.mouse.get_pos()
-    if player_rec.collidepoint((mouse_pos)):
-        print('collision')
+    if snail_rec.collidepoint((mouse_pos)):
+        print(pygame.mouse.get_pressed())
     
     pygame.display.update()
     clock.tick(60) # sets max frame to 60fps
