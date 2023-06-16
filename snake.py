@@ -34,18 +34,27 @@ while True:
     screen.blit(sky_surface,(0,0))
     screen.blit(ground_surface,(0,300))
     screen.blit(text_surface,(330,50))
-       
+
+    #for snail   
     screen.blit(snail_surface,snail_rec)
-    print(snail_rec.left)
+    
     snail_rec.left-=4
     if snail_rec.right<0:snail_rec.left=800
+
+    #for player
     screen.blit(player_surface,player_rec)
-    player_rec.left+=4
-    print(player_rec.left)
+    # player_rec.left+=4
+    
     if player_rec.left>800:player_rec.right=0
     
+    # #collison
+    # collision=player_rec.colliderect(snail_rec)
+    # if collision:
+    #     print("Collision")
+    mouse_pos=pygame.mouse.get_pos()
+    if player_rec.collidepoint((mouse_pos)):
+        print('collision')
     
-
     pygame.display.update()
     clock.tick(60) # sets max frame to 60fps
     
