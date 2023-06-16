@@ -29,6 +29,11 @@ while True:
         if event.type==pygame.QUIT:
             pygame.quit()
             exit()
+        if event.type == pygame.MOUSEMOTION:
+            if player_rec.collidepoint(event.pos):
+                print("collide")
+
+        
 
     #showing surface to the screen using coordinate        
     screen.blit(sky_surface,(0,0))
@@ -51,9 +56,9 @@ while True:
     # collision=player_rec.colliderect(snail_rec)
     # if collision:
     #     print("Collision")
-    mouse_pos=pygame.mouse.get_pos()
-    if snail_rec.collidepoint((mouse_pos)):
-        print(pygame.mouse.get_pressed())
+    # mouse_pos=pygame.mouse.get_pos()
+    # if player_rec.collidepoint((mouse_pos)):
+    #     print(pygame.mouse.get_pressed())#shows what mouse button is pressed
     
     pygame.display.update()
     clock.tick(60) # sets max frame to 60fps
