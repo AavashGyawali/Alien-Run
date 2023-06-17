@@ -32,6 +32,17 @@ while True:
         if event.type==pygame.QUIT:
             pygame.quit()
             exit()
+
+
+        if event.type == pygame.KEYDOWN:
+            if event.key==pygame.K_SPACE:
+                print("Jump")
+        
+        if event.type == pygame.KEYUP:
+            print("key up")
+
+
+
         # if event.type == pygame.MOUSEMOTION:
         #     if player_rec.collidepoint(event.pos):
         #         print("collide")
@@ -59,9 +70,11 @@ while True:
     if player_rec.left>800:player_rec.right=0
 
 
-    keys=pygame.key.get_pressed()
-    if keys[pygame.K_SPACE]:
-        print('Jump')
+
+
+    # keys=pygame.key.get_pressed()
+    # if keys[pygame.K_SPACE]:
+    #     print('Jump')
     
     # #collison
     # collision=player_rec.colliderect(snail_rec)
