@@ -34,28 +34,22 @@ while True:
             pygame.quit()
             exit()
 
-
+#if space key is pressed player will jump
         if event.type == pygame.KEYDOWN:
             if event.key==pygame.K_SPACE:
                 player_gravity=-20
                 # player_gravity+=1
-                
-        
-        if event.type == pygame.KEYUP:
-            print("key up")
-
-        
+            
         # if player_rec.collidepoint((mouse_pos)) and pygame.mouse.get_pressed():
         #     player_gravity=-20
 
+       #if mouse key is pressed on the player rectangle than player will jump
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if pygame.mouse.get_pressed():
+                if player_rec.collidepoint(event.pos):#instead of event.pos you can write pygame.mouse.get_pos()
+                    player_gravity=-20
 
-
-        mouse_pos=pygame.mouse.get_pos()
-        if event.type == pygame.MOUSEMOTION:
-            if player_rec.collidepoint((mouse_pos)) and pygame.mouse.get_pressed():
-                player_gravity=-20
-                player_gravity+=1
-                
+        
         
 
     #showing surface to the screen using coordinate        
@@ -80,23 +74,6 @@ while True:
     
     if player_rec.left>800:player_rec.right=0
 
-
-
-
-    # keys=pygame.key.get_pressed()
-    # if keys[pygame.K_SPACE]:
-    #     print('Jump')
-    
-    # #collison
-    # collision=player_rec.colliderect(snail_rec)
-    # if collision:
-    #     print("Collision")
-
-
-    # mouse_pos=pygame.mouse.get_pos()
-    # if player_rec.collidepoint((mouse_pos)):
-    #     print(pygame.mouse.get_pressed())#shows what mouse button is pressed
-    
     pygame.display.update()
     clock.tick(60) # sets max frame to 60fps
     
