@@ -37,8 +37,9 @@ while True:
 #if space key is pressed player will jump
         if event.type == pygame.KEYDOWN:
             if event.key==pygame.K_SPACE:
-                player_gravity=-20
-                # player_gravity+=1
+                if player_rec.bottom == 300:
+                    player_gravity=-20
+                    # player_gravity+=1
             
         # if player_rec.collidepoint((mouse_pos)) and pygame.mouse.get_pressed():
         #     player_gravity=-20
@@ -70,9 +71,12 @@ while True:
     #Player
     player_gravity+=1
     player_rec.y+=player_gravity
+    if player_rec.bottom>300:player_rec.bottom=300
     screen.blit(player_surface,player_rec)
     
     if player_rec.left>800:player_rec.right=0
+
+    
 
     pygame.display.update()
     clock.tick(60) # sets max frame to 60fps
