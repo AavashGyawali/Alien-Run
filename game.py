@@ -41,8 +41,7 @@ while True:
                     player_gravity=-20
                     # player_gravity+=1
             
-        # if player_rec.collidepoint((mouse_pos)) and pygame.mouse.get_pressed():
-        #     player_gravity=-20
+       
 
        #if mouse key is pressed on the player rectangle than player will jump
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -71,7 +70,7 @@ while True:
     #Player
     player_gravity+=1
     player_rec.y+=player_gravity
-    if player_rec.bottom>300:player_rec.bottom=300
+    if player_rec.bottom>=300:player_rec.bottom=300
     screen.blit(player_surface,player_rec)
     
     if player_rec.left>800:player_rec.right=0
