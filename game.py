@@ -23,9 +23,10 @@ score_rec=score_surface.get_rect(center=(400,50))
 snail_surface=pygame.image.load("graphics\snail\snail1.png").convert_alpha()
 snail_rec=snail_surface.get_rect(bottomright=(600,300))
 
-
+#player
 player_surface=pygame.image.load("graphics/player/player_walk_1.png").convert_alpha()
 player_rec=player_surface.get_rect(bottomleft=(80,300))
+player_gravity=0
 
 while True:
     for event in pygame.event.get():
@@ -36,17 +37,25 @@ while True:
 
         if event.type == pygame.KEYDOWN:
             if event.key==pygame.K_SPACE:
-                print("Jump")
+                player_gravity=-20
+                # player_gravity+=1
+                
         
         if event.type == pygame.KEYUP:
             print("key up")
 
+        
+        # if player_rec.collidepoint((mouse_pos)) and pygame.mouse.get_pressed():
+        #     player_gravity=-20
 
 
-        # if event.type == pygame.MOUSEMOTION:
-        #     if player_rec.collidepoint(event.pos):
-        #         print("collide")
 
+        mouse_pos=pygame.mouse.get_pos()
+        if event.type == pygame.MOUSEMOTION:
+            if player_rec.collidepoint((mouse_pos)) and pygame.mouse.get_pressed():
+                player_gravity=-20
+                player_gravity+=1
+                
         
 
     #showing surface to the screen using coordinate        
@@ -64,7 +73,9 @@ while True:
     snail_rec.left-=4
     if snail_rec.right<0:snail_rec.left=800
 
-    #for player
+    #Player
+    player_gravity+=1
+    player_rec.y+=player_gravity
     screen.blit(player_surface,player_rec)
     
     if player_rec.left>800:player_rec.right=0
