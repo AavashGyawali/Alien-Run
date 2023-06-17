@@ -55,9 +55,13 @@ while True:
 
     #for player
     screen.blit(player_surface,player_rec)
-    # player_rec.left+=4
     
     if player_rec.left>800:player_rec.right=0
+
+
+    keys=pygame.key.get_pressed()
+    if keys[pygame.K_SPACE]:
+        print('Jump')
     
     # #collison
     # collision=player_rec.colliderect(snail_rec)
