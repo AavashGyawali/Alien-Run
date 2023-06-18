@@ -8,9 +8,14 @@ def display_score():
     return current_time
     
 
-
+#variable declaration
 width=800
 height= 400
+game_active=False
+start_time=0
+score =0
+
+
 pygame.init()
 screen=pygame.display.set_mode((width,height))
 pygame.display.set_caption("Alien Run")
@@ -20,10 +25,6 @@ clock = pygame.time.Clock()
 test_font=pygame.font.Font("font\Pixeltype.ttf",50)
 
 
-game_active=False
-start_time=0
-score =0
-
 #creating surface
 sky_surface=pygame.image.load("graphics/Sky.png").convert()
 ground_surface=pygame.image.load("graphics/ground.png").convert()
@@ -31,9 +32,6 @@ ground_surface=pygame.image.load("graphics/ground.png").convert()
 #Title
 title_surface=test_font.render("Alien Run",False,(64,64,64))
 title_rect=title_surface.get_rect(center=(400,25))
-
-
-
 
 #Result
 result_surface=test_font.render(f"Your Score is ",False,(64,64,64))
@@ -121,7 +119,7 @@ while True:
 
         #for snail   
         screen.blit(snail_surface,snail_rec)
-        snail_rec.left-=4
+        snail_rec.left-=7 
         if snail_rec.right<0:snail_rec.left=800
 
         #Player
