@@ -1,13 +1,34 @@
 
 import pygame
 from sys import exit
+from random import randint
 
 
 def display_score():
     current_time=int(pygame.time.get_ticks()/120)-start_time
     return current_time
-    
+def obstacle_movement(obstacle_list):
+    if obstacle_list:
+        for obstacle_rect in obstacle_list:
+            obstacle_rect.x-=5
 
+            if obstacle_rect.bottom==300:
+                screen.blit(snail_surface,obstacle_rect) 
+
+            else:
+                screen.blit(fly_surf,obstacle_rect) 
+
+
+        obstacle_list=[obstacle for obstacle in obstacle_list if obstacle.x > -100]
+        return obstacle_list  
+    else: return []
+
+def collison(player,obsticles):
+    if obsticles:
+        for obsticle_rect in obsticles:
+            if player.colliderect(obsticle_rect):
+                return False
+    return True
 #variable declaration
 width=800
 height= 400
@@ -39,7 +60,13 @@ result_rec=result_surface.get_rect(center=(400,25))
 
 #snail surface
 snail_surface=pygame.image.load("graphics\snail\snail1.png").convert_alpha()
-snail_rec=snail_surface.get_rect(bottomright=(600,300))
+
+
+#obstacle
+fly_surf=pygame.image.load("graphics\Fly\Fly1.png")
+obstacle_rect_list=[]
+
+
 
 #player
 player_surface=pygame.image.load("graphics/player/player_walk_1.png").convert_alpha()
@@ -68,6 +95,11 @@ game_over_rec=game_over_surface.get_rect(center=(400,150))
 to_restart_surface=test_font.render("Press  Space  to  Restart",False,(64,64,64))
 to_restart_rec=to_restart_surface.get_rect(center=(400,200))
 
+#Timer
+obstacle_timer=pygame.USEREVENT +1  # +1 to avoide confilct with reserved event for pygame 
+pygame.time.set_timer(obstacle_timer,1500)#1400 is in ms
+
+
 
 while True:
     for event in pygame.event.get():
@@ -80,7 +112,7 @@ while True:
 #if space key is pressed player will jump
             if event.type == pygame.KEYDOWN:
                 if event.key==pygame.K_SPACE and player_rec.bottom >=300:
-                        player_gravity=-22
+                        player_gravity=-20
                         # player_gravity+=1
                 
         
@@ -89,15 +121,21 @@ while True:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if pygame.mouse.get_pressed():
                     if player_rec.collidepoint(event.pos):#instead of event.pos you can write pygame.mouse.get_pos()
-                        player_gravity=-22
+                        player_gravity=-20
 
         else:
             if event.type == pygame.KEYDOWN and event.key==pygame.K_SPACE:
                 game_active=True
-                snail_rec.left=800
+                
                 start_time=int(pygame.time.get_ticks()/120)
 
+        if event.type==obstacle_timer and game_active:
+            if randint(0,2):
+                obstacle_rect_list.append(snail_surface.get_rect(bottomright =(randint(900,1100),300)))
+            else:
+                obstacle_rect_list.append(fly_surf.get_rect(bottomright =(randint(900,1100),200)))
 
+    
 
         
  # Before Collison(Gameplay)
@@ -107,6 +145,8 @@ while True:
         screen.blit(ground_surface,(0,300))
         screen.blit(title_surface,title_rect)
         score=display_score()
+
+        
 
 
         #Score Text
@@ -118,9 +158,9 @@ while True:
 
 
         #for snail   
-        screen.blit(snail_surface,snail_rec)
-        snail_rec.left-=7 
-        if snail_rec.right<0:snail_rec.left=800
+        # screen.blit(snail_surface,snail_rec)
+        # snail_rec.left-=7 
+        # if snail_rec.right<0:snail_rec.left=800
 
         #Player
         player_gravity+=1
@@ -131,9 +171,13 @@ while True:
         if player_rec.left>800:player_rec.right=0
 
     
-        if player_rec.colliderect(snail_rec):
-            game_active=False
+        # if player_rec.colliderect(snail_rec):
+        #     game_active=False
 
+#obstacle movement
+        obstacle_rect_list=obstacle_movement(obstacle_rect_list)
+#collison
+        game_active=collison(player_rec,obstacle_rect_list)
 
 #After Collision
     else:
@@ -147,6 +191,7 @@ while True:
             else:
                 screen.blit(game_over_surface,game_over_rec)
                 screen.blit(to_restart_surface,to_restart_rec)
+                obstacle_rect_list.clear()
 
 
         
