@@ -22,13 +22,25 @@ def obstacle_movement(obstacle_list):
         obstacle_list=[obstacle for obstacle in obstacle_list if obstacle.x > -100]
         return obstacle_list  
     else: return []
-
 def collison(player,obsticles):
     if obsticles:
         for obsticle_rect in obsticles:
             if player.colliderect(obsticle_rect):
                 return False
     return True
+def player_animation():
+    global player_surf,player_index
+
+    if player_rec.bottom<300:
+        #jump
+        player_surf=player_jump
+    else:
+        #walk
+        player_index+=0.1
+        if player_index>=len(player_walk):player_index=0
+        player_surf=player_walk[int(player_index)]
+
+
 #variable declaration
 width=800
 height= 400
@@ -69,8 +81,14 @@ obstacle_rect_list=[]
 
 
 #player
-player_surface=pygame.image.load("graphics/player/player_walk_1.png").convert_alpha()
-player_rec=player_surface.get_rect(bottomleft=(80,300))
+player_walk_1=pygame.image.load("graphics/player/player_walk_1.png").convert_alpha()
+player_walk_2=pygame.image.load("graphics/player/player_walk_2.png").convert_alpha()
+player_walk=[player_walk_1,player_walk_2]
+player_index=0 #to choose among player_walk_1 and 2
+player_jump=pygame.image.load("graphics/player/jump.png").convert_alpha()
+
+player_surf=player_walk[player_index]
+player_rec=player_surf.get_rect(bottomleft=(80,300))
 player_gravity=0
 
 
@@ -166,7 +184,8 @@ while True:
         player_gravity+=1
         player_rec.y+=player_gravity
         if player_rec.bottom>=300:player_rec.bottom=300
-        screen.blit(player_surface,player_rec)
+        player_animation()
+        screen.blit(player_surf,player_rec)
         
         if player_rec.left>800:player_rec.right=0
 
