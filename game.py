@@ -192,6 +192,10 @@ while True:
                 screen.blit(game_over_surface,game_over_rec)
                 screen.blit(to_restart_surface,to_restart_rec)
                 obstacle_rect_list.clear()
+                player_rec.midbottom=(80,300)
+                player_gravity=0
+
+            
 
 
         
