@@ -54,7 +54,7 @@ To play the Alien Adventure Game, follow these steps:
 4. **Run the Game:** Navigate to the project directory using the terminal or command prompt. Execute the `game.py` file by running the following command `python game.py`:
 
 
-Make sure Python is installed on your system. If not, download and install Python from the official website: python.org.
+Make sure Python is installed on your system. If not, download and install Python from the official website: [python](https://www.python.org/downloads/).
 Install the Pygame library by running the following command `pip install pygame` in your terminal or command prompt:
 
 
@@ -66,7 +66,6 @@ Enjoy playing the Alien Run Game and have a fantastic time navigating the alien 
 
 
 ## Acknowledgements
-Give credit here.
 - This project was inspired by Clear Code
 - This project was based on [this tutorial](https://www.youtube.com/watch?v=AY9MnQ4x3zk&t=11638s&ab_channel=ClearCodem).
 
