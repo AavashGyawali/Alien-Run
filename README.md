@@ -24,7 +24,6 @@ Pygame: A popular Python library for creating games, providing functionalities f
 
 
 ## Features
-List the ready features here:
 - Control an alien character through a landscape.
 - Encounter snails as obstacles and make timely decisions to jump over
 - Watch out for flying birds and navigate the alien to avoid colliding with them.
