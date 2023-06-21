@@ -55,7 +55,7 @@ pygame.display.set_caption("Alien Run")
 clock = pygame.time.Clock()
 
 #creating font
-test_font=pygame.font.Font("font\Pixeltype.ttf",50)
+test_font=pygame.font.Font("font/Pixeltype.ttf",50)
 
 
 #creating surface
@@ -71,15 +71,15 @@ result_surface=test_font.render(f"Your Score is ",False,(64,64,64))
 result_rec=result_surface.get_rect(center=(400,25))
 
 #snail surface
-snail_frame_1=pygame.image.load("graphics\snail\snail1.png").convert_alpha()
-snail_frame_2=pygame.image.load("graphics\snail\snail2.png").convert_alpha()
+snail_frame_1=pygame.image.load("graphics/snail/snail1.png").convert_alpha()
+snail_frame_2=pygame.image.load("graphics/snail/snail2.png").convert_alpha()
 snail_frame=[snail_frame_1,snail_frame_2]
 snail_frame_index=0
 snail_surf=snail_frame[snail_frame_index]
 
 #fly
-fly_frame_1=pygame.image.load("graphics\Fly\Fly1.png")
-fly_frame_2=pygame.image.load("graphics\Fly\Fly2.png")
+fly_frame_1=pygame.image.load("graphics/Fly/Fly1.png")
+fly_frame_2=pygame.image.load("graphics/Fly/Fly2.png")
 fly_frame=[fly_frame_1,fly_frame_2]
 fly_frame_index=0
 fly_surf=fly_frame[fly_frame_index]
@@ -89,11 +89,11 @@ obstacle_rect_list=[]
 
 
 #player
-player_walk_1=pygame.image.load("graphics/player/player_walk_1.png").convert_alpha()
-player_walk_2=pygame.image.load("graphics/player/player_walk_2.png").convert_alpha()
+player_walk_1=pygame.image.load("graphics/Player/player_walk_1.png").convert_alpha()
+player_walk_2=pygame.image.load("graphics/Player/player_walk_2.png").convert_alpha()
 player_walk=[player_walk_1,player_walk_2]
 player_index=0 #to choose among player_walk_1 and 2
-player_jump=pygame.image.load("graphics/player/jump.png").convert_alpha()
+player_jump=pygame.image.load("graphics/Player/jump.png").convert_alpha()
 
 player_surf=player_walk[player_index]
 player_rec=player_surf.get_rect(bottomleft=(80,300))
@@ -101,7 +101,7 @@ player_gravity=0
 
 
 #intro screen
-player_stand_surface=pygame.image.load("graphics\Player\player_stand.png").convert_alpha()
+player_stand_surface=pygame.image.load("graphics/Player/player_stand.png").convert_alpha()
 player_stand_surface=pygame.transform.rotozoom(player_stand_surface,0,2)
 player_stand_rect=player_stand_surface.get_rect(center=(400,200))
 
@@ -236,12 +236,6 @@ while True:
                 player_gravity=0
 
             
-
-
-        
-        
-        
-
     pygame.display.update()
     clock.tick(60) # sets max frame to 60fps
     
