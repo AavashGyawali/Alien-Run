@@ -3,7 +3,7 @@ import pygame
 from sys import exit
 from random import randint,choice
 
-# from pygame.sprite import _Group
+#CLasses
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -20,10 +20,13 @@ class Player(pygame.sprite.Sprite):
         self.rect=self.image.get_rect(midbottom=(80,300))
         self.gravity=0
 
+        self.jump_sound=pygame.mixer.Sound("audio/cartoon-jump-6462.mp3")
+
     def player_input(self):
         keys=pygame.key.get_pressed()
         if keys[pygame.K_SPACE] and self.rect.bottom>=300:
             self.gravity=-20
+            self.jump_sound.play()
 
     def apply_gravity(self):
         self.gravity+=1
@@ -83,9 +86,7 @@ class Obstacles(pygame.sprite.Sprite):
         if self.rect.x<=-100:
             self.kill()
 
-
-
-
+#functions
 
 def display_score():
     current_time=int(pygame.time.get_ticks()/120)-start_time
