@@ -51,7 +51,7 @@ To play the Alien Adventure Game, follow these steps:
 
 1. **Install Python:** Make sure Python is installed on your system. If not, you can download and install Python from the official website: [python.org](https://www.python.org/).
 
-2. **Install Pygame:** Open your terminal or command prompt and run the following command to install the Pygame library:
+2. **Install Pygame:** Open your terminal or command prompt and run the following command `pip install pygame` to install the Pygame library:
 
 3. **Download the Game:** Clone or download the game's source code from the [GitHub repository](https://github.com/AavashGyawali/Alien-Run.git).
 
@@ -59,37 +59,14 @@ To play the Alien Adventure Game, follow these steps:
 
 
 Make sure Python is installed on your system. If not, download and install Python from the official website: python.org.
-Install the Pygame library by running the following command in your terminal or command prompt:
+Install the Pygame library by running the following command `pip install pygame` in your terminal or command prompt:
 
 
 5. **Control the Alien:** Use the space keys on your keyboard to control the alien character. Press the **Space key** to jump over snails.
 
 6. **Survive and Score:** Your objective is to survive for as long as possible while earning points and setting high scores. Avoid colliding with snails and birds to stay in the game and improve your score.
 
-Enjoy playing the Alien Run Game and have a fantastic time navigating the alien through the desert obstacles with Python and Pygame!
-
-
-## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
-
-`write-your-code-here`
-
-
-## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
-
-
-## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-- Feature to be added 1
-- Feature to be added 2
+Enjoy playing the Alien Run Game and have a fantastic time navigating the alien through the obstacles with Python and Pygame!
 
 
 ## Acknowledgements
