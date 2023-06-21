@@ -19,7 +19,7 @@ This project aims to provide an entertaining and engaging gaming experience for 
 
 
 ## Technologies Used
-Python: The primary programming language used to develop the game logic and mechanics.
+Python: The primary programming language used to develop the game logic and mechanics.<br>
 Pygame: A popular Python library for creating games, providing functionalities for graphics, sound, and user input.
 
 
@@ -45,13 +45,13 @@ Pygame: A popular Python library for creating games, providing functionalities f
 
 To play the Alien Adventure Game, follow these steps:
 
-1. **Install Python:** Make sure Python is installed on your system. If not, you can download and install Python from the official website: [python.org](https://www.python.org/).
+1. **Install Python:** Make sure Python is installed on your system. If not, you can download and install Python from the official website: [python.org](https://www.python.org/downloads/).
 
 2. **Install Pygame:** Open your terminal or command prompt and run the following command `pip install pygame` to install the Pygame library:
 
 3. **Download the Game:** Clone or download the game's source code from the [GitHub repository](https://github.com/AavashGyawali/Alien-Run.git).
 
-4. **Run the Game:** Navigate to the project directory using the terminal or command prompt. Execute the `game.py` file by running the following command:
+4. **Run the Game:** Navigate to the project directory using the terminal or command prompt. Execute the `game.py` file by running the following command `python game.py`:
 
 
 Make sure Python is installed on your system. If not, download and install Python from the official website: python.org.
