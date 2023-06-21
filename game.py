@@ -21,6 +21,7 @@ class Player(pygame.sprite.Sprite):
         self.gravity=0
 
         self.jump_sound=pygame.mixer.Sound("audio/cartoon-jump-6462.mp3")
+        self.jump_sound.set_volume(0.5)
 
     def player_input(self):
         keys=pygame.key.get_pressed()
@@ -126,7 +127,12 @@ def player_animation():
 
 def collision_sprite():
     if pygame.sprite.spritecollide(player.sprite,obstacle_group,False):
+        back_ground_music.stop()
+        global music
+        music=False
         obstacle_group.empty()
+        collison_music.play()
+        
         return False
     else:
         return True
@@ -134,14 +140,21 @@ def collision_sprite():
 #variable declaration
 width=800
 height= 400
-game_active=False
-start_time=0
-score =0
-
-
 
 
 pygame.init()
+game_active=False
+start_time=0
+score =0
+#music
+back_ground_music=pygame.mixer.Sound("audio/music.wav")
+back_ground_music.play(loops= -1)#play forever
+back_ground_music.set_volume(0.3)
+music =True
+
+collison_music=pygame.mixer.Sound("audio/negative_beeps-6008.mp3")
+
+
 screen=pygame.display.set_mode((width,height))
 pygame.display.set_caption("Alien Run")
 clock = pygame.time.Clock()
@@ -233,6 +246,8 @@ fly_animation_timer=pygame.USEREVENT+3
 pygame.time.set_timer(fly_animation_timer,200)#200 is in ms
 
 while True:
+    
+        
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             pygame.quit()
@@ -240,6 +255,9 @@ while True:
 
 
         if game_active:
+            
+            
+
 #if space key is pressed player will jump
             if event.type == pygame.KEYDOWN:
                 if event.key==pygame.K_SPACE and player_rec.bottom >=300:
@@ -259,6 +277,10 @@ while True:
                 game_active=True
                 
                 start_time=int(pygame.time.get_ticks()/120)
+                
+                if not music:
+                    music=True
+                    back_ground_music.play()
         
         if game_active:
             if event.type==obstacle_timer:
@@ -307,6 +329,7 @@ while True:
 
 #After Collision
     else:
+            
             if score ==0:
                 screen.fill('white')
                 screen.blit(player_stand_surface,player_stand_rect)
@@ -315,6 +338,8 @@ while True:
 
 
             else:
+                
+                
                 screen.blit(game_over_surface,game_over_rec)
                 screen.blit(to_restart_surface,to_restart_rec)
                 obstacle_rect_list.clear()
